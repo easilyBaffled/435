@@ -1,0 +1,14 @@
+<Graph>
+  <Node id="drupal/" name="drupal/" desc="http://localhost/" nodeColor="0xFF0000" nodeSize="64" nodeClass="leaf" nodeIcon="1" x="10" y="10"/>
+  <Node id="drupal/#main-content" name="drupal/#main-content" desc="http://localhost/" nodeColor="0xFF0000" nodeSize="64" nodeClass="leaf" nodeIcon="1" x="10" y="10"/>
+  <Node id="drupal/?q=user/register" name="drupal/?q=user/register" desc="http://localhost/" nodeColor="0x000000" nodeSize="64" nodeClass="leaf" nodeIcon="1" x="10" y="10"/>
+  <Node id="drupal/?q=user/password" name="drupal/?q=user/password" desc="http://localhost/" nodeColor="0x000000" nodeSize="64" nodeClass="leaf" nodeIcon="1" x="10" y="10"/>
+  <Edge fromID="drupal/" toID="drupal/#main-content" color="0x8F8FFF" flow="50"/>
+  <Edge fromID="drupal/" toID="drupal/" color="0x8F8FFF" flow="50"/>
+  <Edge fromID="drupal/" toID="drupal/?q=user/register" color="0x8F8FFF" flow="50"/>
+  <Edge fromID="drupal/" toID="drupal/?q=user/password" color="0x8F8FFF" flow="50"/>
+  <Edge fromID="drupal/#main-content" toID="drupal/#main-content" color="0x8F8FFF" flow="50"/>
+  <Edge fromID="drupal/#main-content" toID="drupal/" color="0x8F8FFF" flow="50"/>
+  <Edge fromID="drupal/#main-content" toID="drupal/?q=user/register" color="0x8F8FFF" flow="50"/>
+  <Edge fromID="drupal/#main-content" toID="drupal/?q=user/password" color="0x8F8FFF" flow="50"/>
+</Graph>
