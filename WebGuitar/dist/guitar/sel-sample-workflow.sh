@@ -8,7 +8,7 @@
 MEDIAWIKI_PATH=/var/www/mediawiki
 php $MEDIAWIKI_PATH/maintenance/edit.php -s "Quick edit" -m Main_Page < $MEDIAWIKI_PATH/maintenance/faultpages/fault0
 
-website="http://localhost/mediawiki/index.php/Main_Page"
+website="https://googledrive.com/host/0B6TP-LuwGMgZbERwOXF5ZTNzWW8/helloworld.html"
 
 #
 # test case directory 
