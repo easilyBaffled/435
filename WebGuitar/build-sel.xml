@@ -148,12 +148,12 @@
 	<!-- Potential test target for WebGuitar. Added 6/17/13 -->
 	<target name="test" depends="dist">
 		<subant>
-			<fileset dir="${global.modules.dir}/*-core" includes="**/tests/build.xml"/>
+			<fileset dir="${global.modules.dir}" includes="**/*-core/tests/build.xml"/>
 			<target name="clean"/>
 			<target name="report"/>
 		</subant>
 		<subant>
-			<fileset dir="${global.modules.dir}/*-sel" includes="**/tests/build.xml"/>
+			<fileset dir="${global.modules.dir}" includes="**/*-sel/tests/build.xml"/>
 			<target name="clean"/>
 			<target name="report"/>
 		</subant>
