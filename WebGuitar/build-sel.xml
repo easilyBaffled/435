@@ -148,7 +148,7 @@
 	<!-- Potential test target for WebGuitar. Added 6/17/13 -->
 	
 	<target name="test" depends="dist">
-		<antcall target="test-tool">
+		<antcall target="sel.test-tool">
 			<param name="modules" value="${sg.modules}"/>
 		</antcall>
 	</target>
