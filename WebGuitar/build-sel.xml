@@ -159,13 +159,13 @@
 		<for list="${modules}" param="module">
 			<sequential>
 				<!-- Clean submodule -->
-				<antcall target="clean-test-module">
+				<antcall target="sel.clean-test-module">
 					<param name="module" value="@{module}"/>
 				</antcall>
 				
 			
 				<!-- report submodules -->
-				<antcall target="report-test-module">
+				<antcall target="sel.report-test-module">
 					<param name="module" value="@{module}" />
 				</antcall>
 
