@@ -74,10 +74,12 @@
   <!-- Build the GUITARModel -->
 
   <target description="Build dependencies" name="build-deps">
+  <!-- TESTING REMOVE BUGGED DEPENDENCIES
     <ant antfile="../install/build.xml" target="dist" dir="${basedir}" inheritAll="false">
       <property name="debug" value="true" />
       <property file="install/build.properties" />
     </ant>
+    -->
   </target>
 
   <!-- Instrument the GUITARModel Classes -->
