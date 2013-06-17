@@ -146,17 +146,45 @@
 	</target>
 	
 	<!-- Potential test target for WebGuitar. Added 6/17/13 -->
+	
 	<target name="test" depends="dist">
-		<subant>
-			<fileset dir="${global.modules.dir}" includes="**/*-core/tests/build.xml"/>
-			<target name="clean"/>
-			<target name="report"/>
-		</subant>
-		<subant>
-			<fileset dir="${global.modules.dir}" includes="**/*-sel/tests/build.xml"/>
-			<target name="clean"/>
-			<target name="report"/>
-		</subant>
+		<antcall target="test-tool">
+			<param name="modules" value="${sg.modules}"/>
+		</antcall>
 	</target>
+	
+	
+	
+	<target name="test-tool">
+		<for list="${modules}" param="module">
+			<sequential>
+				<!-- Clean submodule -->
+				<antcall target="clean-test-module">
+					<param name="module" value="@{module}"/>
+				</antcall>
+				
+			
+				<!-- report submodules -->
+				<antcall target="report-test-module">
+					<param name="module" value="@{module}" />
+				</antcall>
+
+
+			</sequential>
+		</for>
+	</target>
+
+
+	<!-- Parameterized task to clean a module  -->
+	<target name="clean-test-module">
+		<ant antfile="build.xml" dir="${global.modules.dir}/${module}/tests" target="clean" />
+	</target>
+
+	<!-- Parameterized task to generate jar for a module  -->
+	<target name="report-test-module" description="report a test module">
+		<ant antfile="build.xml" dir="${global.modules.dir}/${module}/tests" target="report" />
+	</target>
+	
+	
 
 </project>
