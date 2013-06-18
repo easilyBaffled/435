@@ -155,15 +155,18 @@
 	
   <!-- Compile Cobertura Info -->
 
+<path id="cobertura_refers">
+	<fileset dir="..">
+    		<include name="*-core/src/"/>
+    		<include name="*-sel/src/"/>
+	</fileset>
+</path>
+
   <target name="report" description="Compile the Cobertura Code Coverage Report" depends="execute">
     <mkdir dir="${coverage.dir}" />
     <delete file="${coverage.dir}/*.xml" />
     <cobertura-report format="xml" destdir="${coverage.dir}" datafile="${coverage.dir}/cobertura.ser">
-    	<fileset dir="..">
-    		<include name="*-core/src/*"/>
-    		<include name="*-sel/src/*"/>
-	</fileset>
-
+    	<fileset refid="cobertura_refers"/>
     </cobertura-report>
   </target>
 	
