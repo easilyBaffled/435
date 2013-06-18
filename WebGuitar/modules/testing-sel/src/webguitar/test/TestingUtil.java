@@ -45,9 +45,11 @@ public class TestingUtil {
 		
 		String[] args = {"WebPluginInfo","--website-url", website, "-w", widthStr, "-d", depthStr, "-g", fileName+".GUI", "-l",fileName +"_ph1.log" };
 		
-
+		try {
 		edu.umd.cs.guitar.ripper.Launcher.main(args);
-		
+		} catch (java.lang.Exception e){
+			e.printStackTrace();
+		}
 		hasRunWebRipper = true;
 		
 	}
@@ -122,9 +124,12 @@ public class TestingUtil {
 				
 				String[] args = {"WebPluginInfo","--website-url", website,"-t", testcase, "-g", testcaseName, "-d", "1000", "-g", inputFile+".GUI", "-e", inputFile+".EFG", "-s", fileName+".STA", "-l",fileName +"_ph3.log" };
 				//MADE A CHANGE IN NewGReplayerConfiguration to support parameter for the STA file
+				try {
 				edu.umd.cs.guitar.replayer.Launcher.main(args);
-				
-				
+				} catch (java.lang.Exception e){
+					e.printStackTrace();
+				}
+						
 			}
 			
 			
