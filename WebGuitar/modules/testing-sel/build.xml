@@ -99,7 +99,7 @@
 
   <target description="Build the unit tests" name="build-tests">
     
-    <javac srcdir="${test.dir}" destdir="${test.dir}/webguitar/test" debug="${debug}" deprecation="${deprecation}"  debuglevel="vars,lines,source">
+    <javac srcdir="${test.dir}" destdir="${test.dir}" debug="${debug}" deprecation="${deprecation}"  debuglevel="vars,lines,source">
       <classpath refid="bt_classpath"/>
     </javac>
   </target>
