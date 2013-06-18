@@ -91,6 +91,7 @@
 <path id="bt_classpath">
 	<fileset dir="${shared.lib.dir}/" includes="**/*.jar" erroronmissingdir="true" />
     	<fileset dir="${dist.lib.dir}/" includes="*.jar" erroronmissingdir="true" />
+    	<fileset dir="${dist.lib.dir}/guitar-lib/" includes="*.jar" erroronmissingdir="true" />
 	<path refid="dist.lib.path.ref" />
 	<path refid="junit.lib" />
 </path>
