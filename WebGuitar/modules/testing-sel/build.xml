@@ -154,9 +154,9 @@
   <!-- Compile Cobertura Info -->
 
 
-<fileset id="cobertura_refers" dir="..">
-    	<include name="*-core/src/"/>
-    	<include name="*-sel/src/"/>
+<fileset id="cobertura_refers" dir="${dist.lib.dir}/guitar-lib/">
+    	<include name="*-core.jar"/>
+    	<include name="*-sel.jar"/>
 </fileset>
 
 
