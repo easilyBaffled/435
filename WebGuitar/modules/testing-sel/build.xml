@@ -126,6 +126,10 @@
       <classpath>
 	<path refid="cobertura.lib" />
       </classpath>
+      
+      <classpath>
+      	<fileset dir="${dist.lib.dir}/guitar-lib/" includes="*.jar" erroronmissingdir="true" />
+      </classpath>
 
       <classpath>
 		<pathelement location="${jar.dir}/webguitar-unit-tests.jar" />
