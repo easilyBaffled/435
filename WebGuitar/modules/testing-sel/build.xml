@@ -155,12 +155,12 @@
 	
   <!-- Compile Cobertura Info -->
 
-<path id="cobertura_refers">
-	<fileset dir="..">
-    		<include name="*-core/src/"/>
-    		<include name="*-sel/src/"/>
-	</fileset>
-</path>
+
+<fileset id="cobertura_refers" dir="..">
+    	<include name="*-core/src/"/>
+    	<include name="*-sel/src/"/>
+</fileset>
+
 
   <target name="report" description="Compile the Cobertura Code Coverage Report" depends="execute">
     <mkdir dir="${coverage.dir}" />
