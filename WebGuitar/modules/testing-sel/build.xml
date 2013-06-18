@@ -88,7 +88,7 @@
 
   <!-- Build the Unit Tests -->
 
-  <target description="Build the unit tests" name="build-tests" depends="build-deps">
+  <target description="Build the unit tests" name="build-tests">
     <javac srcdir="${test.dir}" destdir="${test.dir}" debug="${debug}" deprecation="${deprecation}"  debuglevel="vars,lines,source">
       <classpath>
 		<fileset dir="${shared.lib.dir}/" includes="**/*.jar" erroronmissingdir="true" />
