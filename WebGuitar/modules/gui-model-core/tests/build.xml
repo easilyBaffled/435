@@ -105,6 +105,7 @@
 	<fileset dir="${shared.lib.dir}" includes="**/*.jar" erroronmissingdir="false" />
 	<fileset dir="${guitar.lib.dir}" includes="**/*.jar" erroronmissingdir="false" />
 	<fileset dir="${misc.lib.dir}" includes="**/*.jar" erroronmissingdir="true"/>
+	<fileset dir="${guitar.jars.lib.dir}" includes="**/*.jar" erroronmissingdir="true"/>
 	<path refid="dist.lib.path.ref" />
 	<path refid="junit.lib" />
        <!-- <pathelement location="${shared.lib.dir}/easymock-2.5.2.jar"/>
