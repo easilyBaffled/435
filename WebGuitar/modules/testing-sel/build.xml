@@ -159,10 +159,11 @@
     <mkdir dir="${coverage.dir}" />
     <delete file="${coverage.dir}/*.xml" />
     <cobertura-report format="xml" destdir="${coverage.dir}" datafile="${coverage.dir}/cobertura.ser">
-    	<fileset dir="../../*-core/src">
-	    </fileset>
-	    <fileset dir="../../*-sel/src">
-	    </fileset>
+    	<fileset dir="..">
+    		<include name="*-core/src/*"/>
+    		<include name="*-sel/src/*"/>
+	</fileset>
+
     </cobertura-report>
   </target>
 	
