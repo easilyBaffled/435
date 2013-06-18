@@ -5,6 +5,10 @@
 
 package edu.umd.cs.guitar.model.wrapper;
 
+
+import edu.umd.cs.guitar.model.wrapper.*; //EDITTED HERE
+
+
 import edu.umd.cs.guitar.model.data.EFG;
 import edu.umd.cs.guitar.model.data.GUIStructure;
 import java.util.List;
