@@ -96,7 +96,7 @@ public class TestingUtil {
 		
 		String inputFile = isolatePhases ? FilenameUtils.removeExtension(getExpectedFile(fileName, "EFG").getAbsolutePath()) : fileName;
 		
-		String maxTCstr = maxTC < 1 ? 3 : Integer.toString(maxTC); 
+		String maxTCstr = maxTC < 1 ? "3" : Integer.toString(maxTC); 
 		
 		String[] args = {"-p", "SequenceLengthCoverage", "-e",  inputFile + ".EFG", "-l", fileName+"_p3.log", "--dir", "./currentTC", "-m", maxTCstr};
 		
@@ -137,7 +137,7 @@ public class TestingUtil {
 	
 	private File getExpectedFile(String fileName, String ext){
 		
-		return new File(expectedOutputDirectry + "/" + fileName + "." + ext);
+		return new File(expectedOutputDirectory + "/" + fileName + "." + ext);
 		
 	}
 	
