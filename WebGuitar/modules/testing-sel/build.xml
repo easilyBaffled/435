@@ -7,7 +7,7 @@
   <property name="guitar.version" value="3.0" />
 
   <property name="ant.dir" value="${shared.lib.dir}/${ant.lib.dir}" />
-  <property name="test.dir" value="." />
+  <property name="test.dir" value="./src" />
   <property name="cobertura.dir" value="${shared.lib.dir}/cobertura" />
   <property name="report.dir" value="${test.dir}/reports" />
   <property name="report.system.dir" value="${test.dir}/reports-system"/>
@@ -71,21 +71,8 @@
 
   <!-- TARGETS -->
 
-  <!-- Build the GUIReplayer -->
 
-  <target description="Build dependencies" name="build-deps">
-<!-- Commented out because Cobertura doesnt depend correctly.
-    <delete file="../../jars/GUIReplayer-Plugin-Web.jar" />
-    <ant antfile="build.xml" target="dist" dir="../install" inheritAll="false">
-      <property name="debug" value="true" />
-      <property file="../install/build.properties" />
-    </ant>
--->
-  </target>
-
-  <!-- Instrument the GUIReplayer Classes -->
-
-  <target description="Instrument the GUIReplayer Classes" name="instrument" depends="build-deps">
+  <target description="Instrument the Classes" name="instrument">
     <mkdir dir="${jar.dir}" />
     <mkdir dir="${coverage.dir}" />
 
