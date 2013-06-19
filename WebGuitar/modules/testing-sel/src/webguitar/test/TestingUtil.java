@@ -47,7 +47,7 @@ public class TestingUtil {
 			dirCur.mkdir();
 			
 		File dirTC = new File(tcDirName);
-		if(!dirTc.isDirectory())
+		if(!dirTC.isDirectory())
 			dirTC.mkdir();
 			
 		
