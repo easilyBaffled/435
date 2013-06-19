@@ -149,6 +149,7 @@
 		<fileset dir="${shared.lib.dir}/" includes="**/*.jar" erroronmissingdir="true" />
 		<fileset dir="${jar.dir}/" includes="*.jar" erroronmissingdir="true" />
 		<fileset dir="${dist.lib.dir}/" includes="*.jar" erroronmissingdir="true" />
+		<fileset dir="${guitar.modules.dir}/gui-ripper-sel/resources/config/" includes="*" erroronmissingdir="true"/>
      </classpath>
 
       <classpath>
