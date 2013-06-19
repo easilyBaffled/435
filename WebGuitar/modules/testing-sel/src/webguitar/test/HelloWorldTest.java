@@ -11,7 +11,7 @@ public class HelloWorldTest {
 	public void test() {
 		String expectedDir= "";
 		String website="https://googledrive.com/host/0B6TP-LuwGMgZbERwOXF5ZTNzWW8/helloworld.html";
-		String fileName="helloworld";
+		String fileName="helloworld";//name for all created files
 		boolean isolate = true;
 		
 		int width = 3;
