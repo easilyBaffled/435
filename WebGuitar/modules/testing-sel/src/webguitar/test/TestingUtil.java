@@ -4,9 +4,6 @@ import java.lang.reflect.Constructor;
 import java.io.File;
 import org.apache.commons.io.FilenameUtils;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
 
 public class TestingUtil {
 	
@@ -23,12 +20,6 @@ public class TestingUtil {
 	
 	private String tcDirName = "./currentTC";
 	
-	
-	@Test
-	public void test(){
-		//load successful
-		assertTrue(true);
-	}
 	
 	public TestingUtil(String expectedDir, String website, String fileName, boolean isolate){
 		
