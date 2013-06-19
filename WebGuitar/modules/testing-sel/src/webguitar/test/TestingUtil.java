@@ -45,7 +45,9 @@ public class TestingUtil {
 		String widthStr = width < 1 ? "1" : Integer.toString(width);
 		String depthStr = depth < 1 ? "1" : Integer.toString(depth);
 		
-		String[] args = {"WebPluginInfo","--website-url", website, "-w", widthStr, "-d", depthStr, "-g", fileName+".GUI", "-l",fileName +"_ph1.log" };
+		String pluginName = "edu.umd.cs.guitar.ripper.WebPluginInfo";
+		
+		String[] args = {pluginName,"--website-url", website, "-w", widthStr, "-d", depthStr, "-g", fileName+".GUI", "-l",fileName +"_ph1.log" };
 		
 		try {
 		edu.umd.cs.guitar.ripper.Launcher.main(args);
