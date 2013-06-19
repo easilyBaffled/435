@@ -229,7 +229,7 @@
     <delete dir="${coverage.dir}" />
     <delete dir="${jar.dir}" />
     
-    <delete>>
+    <delete>
     	<fileset dir="${basedir}">
     		<include name="*current"/>
     	</fileset> 
