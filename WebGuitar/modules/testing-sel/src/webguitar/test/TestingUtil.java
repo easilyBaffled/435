@@ -20,7 +20,7 @@ public class TestingUtil {
 	
 	private String curDirName = "./current";
 	
-	private String tcDirName = curDirName + "/currentTC";
+	private String tcDirName = curDirName + "/TC";
 	
 	private String outputFile;
 	private String inputFile;
@@ -39,6 +39,18 @@ public class TestingUtil {
 		this.website = website;
 		this.fileName = fileName;
 		isolatePhases = isolate;
+		
+		
+		File dirCur = new File(curDirName);
+		
+		if(!dirCur.isDirectory())
+			dirCur.mkdir();
+			
+		File dirTC = new File(tcDirName);
+		if(!dirTc.isDirectory())
+			dirTC.mkdir();
+			
+		
 		
 		outputFile = curDirName + "/" + fileName;
 		
