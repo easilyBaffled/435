@@ -104,14 +104,18 @@
     </javac>
   </target>
 
-  <!-- Build the Jar File -->
+  <!-- Build the Jar Files -->
 
   <target name="jar" depends="build-tests" description="Fold the Unit Test into the Jar File">
     <mkdir dir="${jar.dir}" />
 
     <jar jarfile="${jar.dir}/webguitar-unit-tests.jar" update="true">
-      <fileset dir="${test.dir}" includes="**/*.class" />
+      <fileset dir="${test.dir}" includes="**/*Test.class" excludes="**/*Util.class"/>
     </jar>
+    <jar jarfile="${jar.dir}/webguitar-test-util.jar" update="true">
+    	<fileset dir="${test.dir}" includes="**/*Util.class" excludes="**/*Test.class"/>
+    </jar>
+    
   </target>
 
   <!-- Execute the Unit Tests -->
@@ -129,6 +133,10 @@
       
       <classpath>
       	<fileset dir="${dist.lib.dir}/guitar-lib/" includes="*.jar" erroronmissingdir="true" />
+      </classpath>
+      
+      <classpath>
+      	<pathelement location="${jar.dir}/webguitar-test-util.jar" />
       </classpath>
 
       <classpath>
