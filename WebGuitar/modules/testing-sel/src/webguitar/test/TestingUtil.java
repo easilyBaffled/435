@@ -23,7 +23,7 @@ public class TestingUtil {
 	private String outputFile;
 	private String inputFile;
 		
-	String pluginName = "edu.umd.cs.guitar.ripper.WebPluginInfo";
+	private String pluginName = "edu.umd.cs.guitar.ripper.WebPluginInfo";
 		
 	
 	public TestingUtil(String expectedDir, String website, String fileName, boolean isolate){
