@@ -18,7 +18,9 @@ public class TestingUtil {
 	private boolean isolatePhases;
 	
 	
-	private String tcDirName = "./currentTC";
+	private String curDirName = "./current";
+	
+	private String tcDirName = curDirName + "/currentTC";
 	
 	private String outputFile;
 	private String inputFile;
@@ -38,7 +40,7 @@ public class TestingUtil {
 		this.fileName = fileName;
 		isolatePhases = isolate;
 		
-		outputFile = toDirName + "/" + fileName;
+		outputFile = curDirName + "/" + fileName;
 		
 		inputFile = isolatePhases ? FilenameUtils.removeExtension(getExpectedFile(fileName, "GUI").getAbsolutePath()) : fileName;
 		
@@ -78,7 +80,7 @@ public class TestingUtil {
 		
 		if(hasRunWebRipper){
 			File expected = getExpectedFile(fileName, "GUI");
-			File current = new File(toDirName + "/" + fileName+".GUI");
+			File current = new File(curDirName + "/" + fileName+".GUI");
 
 			//use https://code.google.com/p/java-diff-utils/ for diff API
 			
@@ -126,7 +128,7 @@ public class TestingUtil {
 				String testcase = f.getName();
 				String testcaseName = FilenameUtils.removeExtension(testcase);
 				
-				String[] args = {pluginName,"--website-url", website,"-t", testcase, "-g", testcaseName, "-d", "1000", "-g", inputFile+".GUI", "-e", inputFile+".EFG", "-s", outputFile+".STA", "-l",outputFile +"_ph3.log" };
+				String[] args = {pluginName,"--website-url", website,"-t", testcase, "-g", testcaseName, "-d", "1000", "-g", inputFile+".GUI", "-e", inputFile+".EFG", "--dir", tcDirName, "-s", outputFile+".STA", "-l",outputFile +"_ph3.log" };
 				//MADE A CHANGE IN NewGReplayerConfiguration to support parameter for the STA file
 				try {
 				edu.umd.cs.guitar.replayer.Launcher.main(args);
