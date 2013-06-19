@@ -79,9 +79,9 @@
     <delete file="${coverage.dir}/cobertura.ser" />
 
     <cobertura-instrument datafile="${coverage.dir}/cobertura.ser" todir="${jar.dir}" >
-      <fileset dir="${dist.lib.dir}">
+      <fileset dir="${guitar.jars.lib.dir}/">
 		  <include name="*-core.jar" />
-    	<include name="$*-sel.jar" />
+    	<include name="*-sel.jar" />
       </fileset>
     </cobertura-instrument>
   </target>
