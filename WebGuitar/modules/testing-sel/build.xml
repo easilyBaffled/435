@@ -123,7 +123,9 @@
   <target name="execute" depends="jar,instrument" description="Execute the Unit Tests">
     <mkdir dir="${report.dir}" />
 
-    <junit fork="yes" dir="${basedir}">
+    <junit fork="yes" showoutput="yes" dir="${basedir}">
+    
+
 
       <sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.dir}/cobertura.ser" />
 
