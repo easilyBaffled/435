@@ -228,6 +228,12 @@
     <delete dir="${report.dir}" />
     <delete dir="${coverage.dir}" />
     <delete dir="${jar.dir}" />
+    
+    <delete>>
+    	<fileset dir="${basedir}">
+    		<include name="*current"/>
+    	</fileset> 
+    </delete>
 
     <delete file="${basedir}/configuration.xml" failonerror="false" />
 
