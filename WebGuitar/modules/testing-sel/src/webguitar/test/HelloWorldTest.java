@@ -12,7 +12,7 @@ public class HelloWorldTest {
 		String expectedDir= "";
 		String website="https://googledrive.com/host/0B6TP-LuwGMgZbERwOXF5ZTNzWW8/helloworld.html";
 		String fileName="helloworld";//name for all created files
-		boolean isolate = true;
+		boolean isolate = false;//set to true to use expected files for input in relevant stages
 		
 		int width = 3;
 		int depth = 1;
