@@ -20,6 +20,10 @@ public class TestingUtil {
 	
 	private String tcDirName = "./currentTC";
 	
+	private String outputFile;
+	private String inputFile;
+		
+	
 	
 	public TestingUtil(String expectedDir, String website, String fileName, boolean isolate){
 		
@@ -32,6 +36,11 @@ public class TestingUtil {
 		this.website = website;
 		this.fileName = fileName;
 		isolatePhases = isolate;
+		
+		outputFile = toDirName + "/" + fileName;
+		
+		inputFile = isolatePhases ? FilenameUtils.removeExtension(getExpectedFile(fileName, "GUI").getAbsolutePath()) : fileName;
+		
 		
 	}
 	
@@ -48,7 +57,7 @@ public class TestingUtil {
 		
 		String pluginName = "edu.umd.cs.guitar.ripper.WebPluginInfo";
 		
-		String[] args = {pluginName,"--website-url", website, "-w", widthStr, "-d", depthStr, "-g", fileName+".GUI", "-l",fileName +"_ph1.log" };
+		String[] args = {pluginName,"--website-url", website, "-w", widthStr, "-d", depthStr, "-g", outputFile+".GUI", "-l",outputFile +"_ph1.log" };
 		
 		try {
 		edu.umd.cs.guitar.ripper.Launcher.main(args);
@@ -70,7 +79,7 @@ public class TestingUtil {
 		
 		if(hasRunWebRipper){
 			File expected = getExpectedFile(fileName, "GUI");
-			File current = new File(fileName+".GUI");
+			File current = new File(toDirName + "/" + fileName+".GUI");
 
 			//use https://code.google.com/p/java-diff-utils/ for diff API
 			
@@ -87,10 +96,7 @@ public class TestingUtil {
 	
 	public void runGuiToEfg(){
 		
-		
-		String inputFile = isolatePhases ? FilenameUtils.removeExtension(getExpectedFile(fileName, "GUI").getAbsolutePath()) : fileName;
-		
-		String[] args= {"-p", "EFGConverter", "-g", fileName+".GUI", "-e", inputFile+".EFG", "-l", fileName+"_p2.log"};
+		String[] args= {"-p", "EFGConverter", "-g", inputFile+".GUI", "-e", outputFile+".EFG", "-l", outputFile+"_p2.log"};
 		
 		edu.umd.cs.guitar.graph.GUIStructure2GraphConverter.main(args);
 				
@@ -100,12 +106,9 @@ public class TestingUtil {
 	
 	public void runTCGenerator(int maxTC){
 		
-		
-		String inputFile = isolatePhases ? FilenameUtils.removeExtension(getExpectedFile(fileName, "EFG").getAbsolutePath()) : fileName;
-		
 		String maxTCstr = maxTC < 1 ? "3" : Integer.toString(maxTC); 
 		
-		String[] args = {"-p", "SequenceLengthCoverage", "-e",  inputFile + ".EFG", "-l", fileName+"_p3.log", "--dir", "./currentTC", "-m", maxTCstr};
+		String[] args = {"-p", "SequenceLengthCoverage", "-e",  inputFile + ".EFG", "-l", outputFile+"_p3.log", "-m", maxTCstr};
 		
 		edu.umd.cs.guitar.testcase.TestCaseGenerator.main(args);
 		
@@ -116,9 +119,6 @@ public class TestingUtil {
 		
 		File tcDir = new File(tcDirName);
 		
-		String inputFile = isolatePhases ? FilenameUtils.removeExtension(getExpectedFile(fileName, "EFG").getAbsolutePath()) : fileName;
-		
-		
 		
 		if(tcDir.isDirectory()){
 			
@@ -127,7 +127,7 @@ public class TestingUtil {
 				String testcase = f.getName();
 				String testcaseName = FilenameUtils.removeExtension(testcase);
 				
-				String[] args = {"WebPluginInfo","--website-url", website,"-t", testcase, "-g", testcaseName, "-d", "1000", "-g", inputFile+".GUI", "-e", inputFile+".EFG", "-s", fileName+".STA", "-l",fileName +"_ph3.log" };
+				String[] args = {"WebPluginInfo","--website-url", website,"-t", testcase, "-g", testcaseName, "-d", "1000", "-g", inputFile+".GUI", "-e", inputFile+".EFG", "-s", outputFile+".STA", "-l",outputFile +"_ph3.log" };
 				//MADE A CHANGE IN NewGReplayerConfiguration to support parameter for the STA file
 				try {
 				edu.umd.cs.guitar.replayer.Launcher.main(args);
