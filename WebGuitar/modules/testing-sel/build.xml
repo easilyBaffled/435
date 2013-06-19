@@ -123,6 +123,9 @@
   <target name="execute" depends="jar,instrument" description="Execute the Unit Tests">
     <mkdir dir="${report.dir}" />
 
+	<copy file="${guitar.modules.dir}/gui-ripper-sel/resources/config/configuration.xml" todir="${basedir}" overwrite="true"/>
+
+
     <junit fork="yes" showoutput="yes" dir="${basedir}">
     
 
@@ -149,7 +152,6 @@
 		<fileset dir="${shared.lib.dir}/" includes="**/*.jar" erroronmissingdir="true" />
 		<fileset dir="${jar.dir}/" includes="*.jar" erroronmissingdir="true" />
 		<fileset dir="${dist.lib.dir}/" includes="*.jar" erroronmissingdir="true" />
-		<fileset dir="${guitar.modules.dir}/gui-ripper-sel/resources/config/" includes="*" erroronmissingdir="true"/>
      </classpath>
 
       <classpath>
@@ -226,6 +228,8 @@
     <delete dir="${report.dir}" />
     <delete dir="${coverage.dir}" />
     <delete dir="${jar.dir}" />
+
+    <delete file="${basedir}/configuration.xml" failonerror="false" />
 
     <delete>
       <fileset dir="${test.dir}">
