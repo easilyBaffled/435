@@ -10,7 +10,7 @@ public class HelloWorldTest {
 	@Test
 	public void test() {
 		String expectedDir= "";
-		String website="";
+		String website="https://googledrive.com/host/0B6TP-LuwGMgZbERwOXF5ZTNzWW8/helloworld.html";
 		String fileName="helloworld";
 		boolean isolate = true;
 		
