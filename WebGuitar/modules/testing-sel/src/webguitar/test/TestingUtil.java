@@ -23,7 +23,8 @@ public class TestingUtil {
 	private String outputFile;
 	private String inputFile;
 		
-	
+	String pluginName = "edu.umd.cs.guitar.ripper.WebPluginInfo";
+		
 	
 	public TestingUtil(String expectedDir, String website, String fileName, boolean isolate){
 		
@@ -54,8 +55,6 @@ public class TestingUtil {
 		
 		String widthStr = width < 1 ? "1" : Integer.toString(width);
 		String depthStr = depth < 1 ? "1" : Integer.toString(depth);
-		
-		String pluginName = "edu.umd.cs.guitar.ripper.WebPluginInfo";
 		
 		String[] args = {pluginName,"--website-url", website, "-w", widthStr, "-d", depthStr, "-g", outputFile+".GUI", "-l",outputFile +"_ph1.log" };
 		
@@ -127,7 +126,7 @@ public class TestingUtil {
 				String testcase = f.getName();
 				String testcaseName = FilenameUtils.removeExtension(testcase);
 				
-				String[] args = {"WebPluginInfo","--website-url", website,"-t", testcase, "-g", testcaseName, "-d", "1000", "-g", inputFile+".GUI", "-e", inputFile+".EFG", "-s", outputFile+".STA", "-l",outputFile +"_ph3.log" };
+				String[] args = {pluginName,"--website-url", website,"-t", testcase, "-g", testcaseName, "-d", "1000", "-g", inputFile+".GUI", "-e", inputFile+".EFG", "-s", outputFile+".STA", "-l",outputFile +"_ph3.log" };
 				//MADE A CHANGE IN NewGReplayerConfiguration to support parameter for the STA file
 				try {
 				edu.umd.cs.guitar.replayer.Launcher.main(args);
