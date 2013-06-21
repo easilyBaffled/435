@@ -89,11 +89,12 @@
   <!-- Build the Unit Tests -->
 
 <path id="bt_classpath">
+	<path refid="junit.lib" />
 	<fileset dir="${shared.lib.dir}/" includes="**/*.jar" erroronmissingdir="true" />
     	<fileset dir="${dist.lib.dir}/" includes="*.jar" erroronmissingdir="true" />
     	<fileset dir="${dist.lib.dir}/guitar-lib/" includes="*.jar" erroronmissingdir="true" />
 	<path refid="dist.lib.path.ref" />
-	<path refid="junit.lib" />
+
 </path>
 
 
@@ -127,10 +128,15 @@
 
 
     <junit fork="yes" showoutput="yes" dir="${basedir}">
-    
+
+
+      <classpath>
+	<path refid="junit.lib" />
+      </classpath>
 
 
       <sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.dir}/cobertura.ser" />
+
 
       <classpath>
 	<path refid="cobertura.lib" />
@@ -153,10 +159,6 @@
 		<fileset dir="${jar.dir}/" includes="*.jar" erroronmissingdir="true" />
 		<fileset dir="${dist.lib.dir}/" includes="*.jar" erroronmissingdir="true" />
      </classpath>
-
-      <classpath>
-	<path refid="junit.lib" />
-      </classpath>
       
       <formatter type="xml" />
 
