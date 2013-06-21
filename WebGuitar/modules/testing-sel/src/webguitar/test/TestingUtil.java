@@ -70,7 +70,7 @@ public class TestingUtil {
 		String widthStr = width < 1 ? "1" : Integer.toString(width);
 		String depthStr = depth < 1 ? "1" : Integer.toString(depth);
 		
-		String[] args = {pluginName,"--website-url", website, "-w", widthStr, "-d", depthStr, "-g", outputFile+".GUI", "-l",outputFile +"_ph1.log" };
+		String[] args = {pluginName,"--website-url", website, "-w", widthStr, "-d", depthStr, "-g", outputFile+".GUI", "-l",outputFile +"_ph1.log" , "-b", "Firefox"};
 		
 		try {
 		edu.umd.cs.guitar.ripper.Launcher.main(args);
