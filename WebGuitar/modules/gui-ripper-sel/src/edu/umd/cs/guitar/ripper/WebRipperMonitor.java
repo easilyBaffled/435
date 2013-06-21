@@ -316,7 +316,8 @@ public class WebRipperMonitor extends GRipperMonitor {
 		}
 		System.out.println("Browser : "  + config.BROWSER);
 		if(config.BROWSER == null || config.BROWSER == WebRipperConfiguration.Browser.Firefox)
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(); 
+			GUITARLog.Info("Driver set to: FirefoxDriver()");	//DEBUG
 		else if (config.BROWSER == WebRipperConfiguration.Browser.Chrome) {
 			if(config.BROWSER_PATH != null)
 				System.setProperty("webdriver.chrome.bin", config.BROWSER_PATH);
@@ -328,9 +329,12 @@ public class WebRipperMonitor extends GRipperMonitor {
 		}
 		
 		driverHtml = new HtmlUnitDriver();
+		GUITARLog.Info("HMTL Driver set to: HtmlUnitDriver()");
 		
 		handler = new WebWindowHandler((RemoteWebDriver)driver);
 		handler.setUp();
+		
+		GUITARLog.Info("Handler setup.")
 		
 		widths = new ArrayList<Integer>();
 		dotGraph = new WebDot();
