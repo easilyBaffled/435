@@ -427,6 +427,8 @@ public class RecorderRipper extends Ripper
 				} catch (Exception e) {
 					GUITARLog.log.error("Uncaught exception while ripping" + e);
 					GUITARLog.log.error("Likely AUT bug. If not, file GUITAR bug");
+					GUITARLog.log.error("Stacktrace: " + e.getStackTrace().toString);//ADDED FOR DEBUG
+					
 					e.printStackTrace();
 				}
 			}
