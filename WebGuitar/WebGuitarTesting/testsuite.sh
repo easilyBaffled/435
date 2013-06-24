@@ -20,3 +20,15 @@ do
   fi
   
 done
+
+
+if [ $total_count -eq $succ_count ]; then
+  #all passed
+  echo "Test suite passed!"
+  exit 0
+else
+  #some failed
+  echo "Test suite failed:"
+  echo $error_count" of "$total_count" failed!"
+  exit 1
+fi
