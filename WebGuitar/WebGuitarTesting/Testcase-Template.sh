@@ -25,7 +25,7 @@
 if [ $# -lt 3 ]; then
  echo "[ERROR] - Testcase-Template: Improper amount of arguments!"
  exit 1
-end
+fi
 
 
 #check if should be run in isolated-mode
