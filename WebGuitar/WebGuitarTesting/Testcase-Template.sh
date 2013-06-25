@@ -92,12 +92,8 @@ fi
 output_file_path=$current_file_path
 
 
+# BEGIN TESTING STAGES
 
-
-
-
-
-#setup java
 dist_dir="../dist/guitar"
 
 width=3
