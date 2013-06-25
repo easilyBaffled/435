@@ -5,6 +5,7 @@
 # Prepare arguments for the testcase template script
 
 testcase_template="./Testcase-Template.sh"
+generate_script="./generate-expected.sh"
 
 
 testname="HelloWorldTest"
@@ -14,6 +15,16 @@ isolate="true"
 
 
 if [ ! -z "$1" ]; then
+
+  if [ "$1" -eq "--generate" ]; then
+    echo "[INFO] - $testname: Generating expected output.."
+    bash $generate_script $testname $website
+    exit 0
+  fi
+
+
+
+
   echo "[INFO] - $testname: isolate argument detected. Assigned to: $1"
   isolate=$1
 fi
