@@ -113,7 +113,7 @@ status=$?
 
 if [ $status -ne 0]; then
   let error_count+=1
-  echo "[ERROR] - $testname: Ripper output failed. Generated GUI did not match the expected GUI"
+  echo "[FAILURE] - $testname: Ripper output failed. Generated GUI did not match the expected GUI"
 else
   echo "[SUCCESS] - $testname: Ripper output verified! Generated GUI is consistent with expected GUI"
 fi
@@ -133,7 +133,7 @@ status=$?
 
 if [ $status -ne 0]; then
   let error_count+=1
-  echo "[ERROR] - $testname: GUI-to-EFG output failed. Generated EFG did not match the expected EFG"
+  echo "[FAILURE] - $testname: GUI-to-EFG output failed. Generated EFG did not match the expected EFG"
 else
   echo "[SUCCESS] - $testname: GUI-to-EFG output verified! Generated EFG is consistent with expected EFG"
 fi
@@ -163,7 +163,7 @@ do
   if [ $status -ne 0]; then
     let error_count+=1
     let invalid_tc_count+=1
-    echo "[ERROR] - $testname: Generated test case output failed. Generated $testcase did not match the expected"
+    echo "[FAILURE] - $testname: Generated test case output failed. Generated $testcase did not match the expected"
   fi
 
 done
@@ -171,7 +171,7 @@ done
 if [ $invalid_tc_count -eq 0 ]; then
   echo "[SUCCESS] - $testname: All generated test-cases verified!"
 else
-  echo "[ERROR] - $testname: $invalid_tc_count test-cases failed to match expected."
+  echo "[FAILURE] - $testname: $invalid_tc_count test-cases failed to match expected."
 fi
 
 
@@ -209,7 +209,7 @@ do
   if [ $status -ne 0]; then
     let error_count+=1
     let invalid_sta_count+=1
-    echo "[ERROR] - $testname: Generated state output failed. Generated $statefile did not match the expected"
+    echo "[FAILURE] - $testname: Generated state output failed. Generated $statefile did not match the expected"
   fi
  
 
@@ -219,7 +219,7 @@ done
 if [ $invalid_sta_count -eq 0 ]; then
   echo "[SUCCESS] - $testname: All STA files verified!"
 else
-  echo "[ERROR] - $testname: $invalid_sta_count STA files failed to matched expected"
+  echo "[FAILURE] - $testname: $invalid_sta_count STA files failed to matched expected"
 
 fi
 
@@ -227,9 +227,9 @@ fi
 
 
 if [ $error_count -eq 0 ]; then
-  echo "[INFO] - $testname: Test case passed!"
+  echo "[SUCCESS] - $testname: Test case passed!"
   exit 0
 else
-  echo "[INFO] - $testname: Test case failed!"
+  echo "[FAILURE] - $testname: Test case failed!"
   exit 1
 fi
