@@ -16,7 +16,7 @@ isolate="true"
 
 if [ ! -z "$1" ]; then
 
-  if [ "$1" -eq "--generate" ]; then
+  if [ "$1" == "--generate" ]; then
     echo "[INFO] - $testname: Generating expected output.."
     bash $generate_script $testname $website
     exit 0
