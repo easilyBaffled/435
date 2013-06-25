@@ -11,6 +11,12 @@
 # the appropriate input file from the EXPECTED directory, rather than the input file generated during the test's
 # runtime. This will effectively isolate each stage of the testing so that even if one fails, the others can still
 # be tested.
+#Piped-Output:
+# All STDOUT output produced by the calls to WebGUITAR is piped to a file: $piped_output
+# All STDERR output produced by the calls to WebGUITAR is piped to a file: $piped_err
+# NOTE: These files will be cleared and newly created each time this script runs.
+#
+# All STDOUT/STDERR output produced by the calls to diff is currently discarded. This will be added soon.
 
 
 #check for proper number of arguments
@@ -28,6 +34,7 @@ testname=$2
 website=$3
 
 piped_output="$testname.out"
+piped_err="$testname.err"
 
 
 
@@ -68,6 +75,12 @@ fi
 testcase_current_dir=$testcase_dir/$testname
 
 piped_output=$testcase_current_dir/$piped_output
+piped_err=$testcase_current_dir/$piped_err
+
+# clear output files
+rm -f $piped_output
+rm -f $piped_err
+
 
 expected_file_path=$testcase_expected_dir/$testname
 current_file_path=$testcase_current_dir/$testname
@@ -99,7 +112,7 @@ dist_dir="../dist/guitar"
 width=3
 depth=3
 
-ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox -p firefoxV6 !> $piped_output"
+ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox -p firefoxV6 >> $piped_output 2>> $piped_err"
 
 
 # run ripper
@@ -123,7 +136,7 @@ fi
 
 # run gui 2 efg
 echo "[INFO] - $testname: Running GUI-to-EFG Converter.."
-gui_to_efg_args="-g $input_file_path.GUI -e $output_file_path.EFG !> $piped_output"
+gui_to_efg_args="-g $input_file_path.GUI -e $output_file_path.EFG >> $piped_output 2>> $piped_err"
 
 bash $dist_dir/gui2efg.sh $gui_to_efg_args
 
@@ -143,7 +156,7 @@ fi
 
 
 # run testcase generator
-tc_args="-e $output_file_path.EFG -m $max_testcases -d $current_gen_testcase_dir !> $piped_output"
+tc_args="-e $output_file_path.EFG -m $max_testcases -d $current_gen_testcase_dir >> $piped_output 2>> $piped_err"
 
 echo "[INFO] - $testname: Running test-case generator.."
 bash $dist_dir/tc-gen-sq.sh $tc_args
@@ -187,7 +200,7 @@ do
   test_name=`basename $testcase`
   test_name=${test_name%.*}
 
-  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -g $test_name.orc -d 1000 !> $piped_output"
+  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -g $test_name.orc -d 1000 >> $piped_output 2>> $piped_err"
 
 	$dist_dir/sel-replayer.sh $replayer_args
 
