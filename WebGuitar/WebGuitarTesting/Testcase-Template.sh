@@ -3,6 +3,16 @@
 # NOTE: Max testcases is optional and will default to 10
 
 
+#Description:
+# Goes through each stage of WebGUITAR (Ripper, GUI-to-EFG, Testcase Generator, Replayer) and checks the output files
+# against the expected files that have been stored in the $expected_dir directory (below).
+#Isolated-Mode:
+# If the $isolate parameter is set to true, each stage of WebGUITAR that uses some form of input file will use
+# the appropriate input file from the EXPECTED directory, rather than the input file generated during the test's
+# runtime. This will effectively isolate each stage of the testing so that even if one fails, the others can still
+# be tested.
+
+
 #check for proper number of arguments
 
 if [ $# -lt 3 ]; then
