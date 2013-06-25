@@ -27,7 +27,9 @@ fi
 output_file_path=$testcase_expected_dir/$testname
 
 
-#setup java
+# use clean log
+export GUITAR_OPTS="-Dlog4j.configuration=log/guitar-clean.glc"
+
 dist_dir="../dist/guitar"
 
 width=3
