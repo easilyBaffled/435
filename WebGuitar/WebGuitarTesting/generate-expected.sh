@@ -33,7 +33,9 @@ dist_dir="../dist/guitar"
 width=3
 depth=3
 
-ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox -p firefoxV6"
+profile_args="-p firefoxV6"
+
+ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox" $profile_args
 
 
 
@@ -57,13 +59,13 @@ bash $dist_dir/tc-gen-sq.sh $tc_args
 # run replayer
 
 
-for testcase in `find $generated_testcase_dir -name "*.tst"| head -n$testcase_num`  
+for testcase in `find $generated_testcase_dir -name "*.tst"| head -n$max_testcases`  
 do
   # getting test name 
 	test_name=`basename $testcase`
 	test_name=${test_name%.*}
 
-  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -s $output_file_path.STA -g $test_name.orc -d 1000"
+  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -s $output_file_path.$test_name.STA -g $test_name.orc -d 1000"
 
 	$dist_dir/sel-replayer.sh $replayer_args
 
