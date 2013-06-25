@@ -79,32 +79,39 @@ ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI
 
 
 # run ripper
+echo "[INFO] - $testname: Running ripper now.."
 bash $dist_dir/sel-ripper.sh $ripper_args 
 
 
-
+echo "[INFO] - $testname: Checking generated GUI file.."
 diff $current_file_path.GUI $expected_file_path.GUI &>/dev/null/
 status=$?
 
 if [ $status -ne 0]; then
   let error_count+=1
   echo "[ERROR] - $testname: Ripper output failed. Generated GUI did not match the expected GUI"
+else
+  echo "[SUCCESS] - $testname: Ripper output verified! Generated GUI is consistent with expected GUI"
 fi
 
 
 
 
 # run gui 2 efg
+echo "[INFO] - $testname: Running GUI-to-EFG Converter.."
 gui_to_efg_args="-g $input_file_path.GUI -e $output_file_path.EFG !> $piped_output"
 
 bash $dist_dir/gui2efg.sh $gui_to_efg_args
 
+echo "[INFO] - $testname: Checking generated EFG file.."
 diff $current_file_path.EFG $expected_file_path.EFG &>/dev/null/
 status=$?
 
 if [ $status -ne 0]; then
   let error_count+=1
   echo "[ERROR] - $testname: GUI-to-EFG output failed. Generated EFG did not match the expected EFG"
+else
+  echo "[SUCCESS] - $testname: GUI-to-EFG output verified! Generated EFG is consistent with expected EFG"
 fi
 
 
@@ -114,8 +121,12 @@ fi
 # run testcase generator
 tc_args="-e $output_file_path.EFG -m $max_testcases -d $current_gen_testcase_dir !> $piped_output"
 
+echo "[INFO] - $testname: Running test-case generator.."
 bash $dist_dir/tc-gen-sq.sh $tc_args
 
+echo "[INFO] - $testname: Checking generated tst files.."
+
+invalid_tc_count=0
 for testcase in `find $current_gen_testcase_dir -name "*.tst"| head -n$max_testcases`  
 do
   # getting test name 
@@ -127,10 +138,17 @@ do
 
   if [ $status -ne 0]; then
     let error_count+=1
+    let invalid_tc_count+=1
     echo "[ERROR] - $testname: Generated test case output failed. Generated $testcase did not match the expected"
   fi
 
 done
+
+if [ $invalid_tc_count -eq 0 ]; then
+  echo "[SUCCESS] - $testname: All generated test-cases verified!"
+else
+  echo "[ERROR] - $testname: $invalid_tc_count test-cases failed to match expected."
+fi
 
 
 
@@ -138,7 +156,7 @@ done
 
 # run replayer
 
-
+echo "[INFO] - $testname: Beginning replayer.."
 for testcase in `find $input_gen_testcase_dir -name "*.tst"| head -n$max_testcases`  
 do
   # getting test name 
@@ -153,7 +171,9 @@ do
 
 done
 
+echo "[INFO] - $testname: Checking STA files.."
 
+invalid_sta_count=0
 for statefile in `find $current_gen_testcase_dir -name "*.STA"| head -n$max_testcases`  
 do
   # getting test name 
@@ -164,11 +184,23 @@ do
   
   if [ $status -ne 0]; then
     let error_count+=1
+    let invalid_sta_count+=1
     echo "[ERROR] - $testname: Generated state output failed. Generated $statefile did not match the expected"
   fi
  
 
 done
+
+
+if [ $invalid_sta_count -eq 0 ]; then
+  echo "[SUCCESS] - $testname: All STA files verified!"
+else
+  echo "[ERROR] - $testname: $invalid_sta_count STA files failed to matched expected"
+
+fi
+
+
+
 
 if [ $error_count -eq 0 ]; then
   echo "[INFO] - $testname: Test case passed!"
