@@ -31,7 +31,7 @@ if [ ! -d $expected_dir ]; then
 fi
 
 if [ ! -d $testcase_expected_dir ]; then
-  echo "[ERROR] - $testname: No expected generated test case directory!"
+  echo "[ERROR] - $testname: No expected directory for this test case!"
   exit 1
 fi
 
