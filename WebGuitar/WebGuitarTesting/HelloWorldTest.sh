@@ -16,7 +16,7 @@ isolate="true"
 if [ ! -z "$1" ]; then
   echo "[INFO] - $testname: isolate argument detected. Assigned to: $1"
   isolate=$1
-end
+fi
 
 
 #execute testcase-template
