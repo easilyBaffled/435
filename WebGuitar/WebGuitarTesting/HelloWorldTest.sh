@@ -21,3 +21,4 @@ end
 
 #execute testcase-template
 bash $testcase_template $isolate $testname $website
+
