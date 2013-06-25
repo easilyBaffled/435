@@ -9,10 +9,12 @@ testcase_template="./Testcase-Template.sh"
 
 testname="HelloWorldTest"
 website="https://googledrive.com/host/0B6TP-LuwGMgZbERwOXF5ZTNzWW8/helloworld.html"
-
-
+#DEFAULT VALUE FOR ISOLATE
 isolate="true"
+
+
 if [ ! -z "$1" ]; then
+  echo "[INFO] - $testname: isolate argument detected. Assigned to: $1"
   isolate=$1
 end
 
