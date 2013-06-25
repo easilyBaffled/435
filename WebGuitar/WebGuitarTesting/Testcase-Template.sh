@@ -11,6 +11,7 @@
 # the appropriate input file from the EXPECTED directory, rather than the input file generated during the test's
 # runtime. This will effectively isolate each stage of the testing so that even if one fails, the others can still
 # be tested.
+# NOTE: Only the exact string "true" will activate isolated-mode. More variations will be supported soon.
 #Piped-Output:
 # All STDOUT output produced by the calls to WebGUITAR is piped to a file: $piped_output
 # All STDERR output produced by the calls to WebGUITAR is piped to a file: $piped_err
