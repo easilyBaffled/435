@@ -3,6 +3,14 @@
 # NOTE: Max testcases is optional and will default to 10
 
 
+#check for proper number of arguments
+
+if [ $# -lt 3 ]; then
+ echo "[ERROR] - Testcase-Template: Improper amount of arguments!"
+ exit 1
+end
+
+
 #check if should be run in isolated-mode
 
 isolate=$1
