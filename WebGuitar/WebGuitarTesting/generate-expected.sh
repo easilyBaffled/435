@@ -35,7 +35,7 @@ depth=3
 
 profile_args="-p firefoxV6"
 
-ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox" $profile_args
+ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox $profile_args"
 
 
 
