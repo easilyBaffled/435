@@ -1,7 +1,9 @@
-
 #check if should be run in isolated-mode
 
 testname="HelloWorldTest"
+website="https://googledrive.com/host/0B6TP-LuwGMgZbERwOXF5ZTNzWW8/helloworld.html"
+
+
 
 testcase_dir="."
 
