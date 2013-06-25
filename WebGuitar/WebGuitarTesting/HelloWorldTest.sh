@@ -3,6 +3,8 @@
 testname="HelloWorldTest"
 website="https://googledrive.com/host/0B6TP-LuwGMgZbERwOXF5ZTNzWW8/helloworld.html"
 
+piped_output="$testname.out"
+
 
 
 testcase_dir="."
@@ -37,6 +39,7 @@ fi
 
 testcase_current_dir=$testcase_dir/$testname
 
+piped_output=$testcase_current_dir/$piped_output
 
 expected_file_path=$testcase_expected_dir/$testname
 current_file_path=$testcase_current_dir/$testname
@@ -72,7 +75,7 @@ dist_dir="../dist/guitar"
 width=3
 depth=3
 
-ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox -p firefoxV6"
+ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox -p firefoxV6 !> $piped_output"
 
 
 # run ripper
@@ -92,7 +95,7 @@ fi
 
 
 # run gui 2 efg
-gui_to_efg_args="-g $input_file_path.GUI -e $output_file_path.EFG"
+gui_to_efg_args="-g $input_file_path.GUI -e $output_file_path.EFG !> $piped_output"
 
 bash $dist_dir/gui2efg.sh $gui_to_efg_args
 
@@ -109,7 +112,7 @@ fi
 
 
 # run testcase generator
-tc_args="-e $output_file_path.EFG -m $max_testcases -d $current_gen_testcase_dir"
+tc_args="-e $output_file_path.EFG -m $max_testcases -d $current_gen_testcase_dir !> $piped_output"
 
 bash $dist_dir/tc-gen-sq.sh $tc_args
 
@@ -142,7 +145,7 @@ do
   test_name=`basename $testcase`
 	test_name=${test_name%.*}
 
-  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -g $test_name.orc -d 1000"
+  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -g $test_name.orc -d 1000 !> $piped_output"
 
 	$dist_dir/sel-replayer.sh $replayer_args
 	
