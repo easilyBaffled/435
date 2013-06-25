@@ -110,6 +110,8 @@ output_file_path=$current_file_path
 
 # BEGIN TESTING STAGES
 
+export GUITAR_OPTS="-Dlog4j.configuration=log/guitar-clean.glc"
+
 dist_dir="../dist/guitar"
 
 width=3
