@@ -34,6 +34,8 @@ fi
 
 #execute testcase-template
 bash $testcase_template $isolate $testname $website
+status=$?
 bash $clean_up_script
+exit $status
 
 
