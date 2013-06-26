@@ -146,7 +146,7 @@ echo "[INFO] - $testname: Checking generated GUI file.."
 diff $current_file_path.GUI $expected_file_path.GUI &>/dev/null
 status=$?
 
-if [ $status -ne 0]; then
+if [ $status -ne 0 ]; then
   let error_count+=1
   echo "[FAILURE] - $testname: Ripper output failed. Generated GUI did not match the expected GUI"
 else
@@ -166,7 +166,7 @@ echo "[INFO] - $testname: Checking generated EFG file.."
 diff $current_file_path.EFG $expected_file_path.EFG &>/dev/null
 status=$?
 
-if [ $status -ne 0]; then
+if [ $status -ne 0 ]; then
   let error_count+=1
   echo "[FAILURE] - $testname: GUI-to-EFG output failed. Generated EFG did not match the expected EFG"
 else
@@ -195,7 +195,7 @@ do
   diff $current_gen_testcase_dir/$testcase $expected_gen_testcase_dir/$testcase &>/dev/null
   status=$?
 
-  if [ $status -ne 0]; then
+  if [ $status -ne 0 ]; then
     let error_count+=1
     let invalid_tc_count+=1
     echo "[FAILURE] - $testname: Generated test case output failed. Generated $testcase did not match the expected"
@@ -241,7 +241,7 @@ do
   diff $statefile $statefile_name &>/dev/null
   status=$?
   
-  if [ $status -ne 0]; then
+  if [ $status -ne 0 ]; then
     let error_count+=1
     let invalid_sta_count+=1
     echo "[FAILURE] - $testname: Generated state output failed. Generated $statefile did not match the expected"
