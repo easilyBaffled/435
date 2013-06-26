@@ -97,7 +97,7 @@ input_gen_testcase_dir=$current_gen_testcase_dir
 
 input_file_path=$current_file_path
 
-if [ $isolate -eq "true" ]; then
+if [ $isolate == "true" ]; then
   echo "[INFO] - $testname: Isolated-mode active"
   input_file_path=$expected_file_path
   input_gen_testcase_dir=$expected_gen_testcase_dir
