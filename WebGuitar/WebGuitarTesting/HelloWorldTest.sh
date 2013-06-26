@@ -6,6 +6,7 @@
 
 testcase_template="./Testcase-Template.sh"
 generate_script="./generate-expected.sh"
+clean_up_script="./clean-up.sh"
 
 
 testname="HelloWorldTest"
@@ -19,6 +20,7 @@ if [ ! -z "$1" ]; then
   if [ "$1" = "--generate" ]; then
     echo "[INFO] - $testname: Generating expected output.."
     bash $generate_script $testname $website
+    bash $clean_up_script
     exit 0
   fi
 
@@ -32,4 +34,6 @@ fi
 
 #execute testcase-template
 bash $testcase_template $isolate $testname $website
+bash $clean_up_script
+
 
