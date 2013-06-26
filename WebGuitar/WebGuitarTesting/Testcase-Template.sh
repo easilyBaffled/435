@@ -192,7 +192,7 @@ do
   test_name=`basename $testcase`
   test_name=${test_name%.*}
 
-  diff $current_gen_testcase_dir/$testcase $expected_gen_testcase_dir/$testcase &>/dev/null
+  diff $current_gen_testcase_dir/$test_name.tst $expected_gen_testcase_dir/$test_name.tst &>/dev/null
   status=$?
 
   if [ $status -ne 0 ]; then
@@ -238,7 +238,7 @@ do
   # getting test name 
   statefile_name=`basename $statefile`
 
-  diff $statefile $statefile_name &>/dev/null
+  diff $statefile $expected_gen_testcase_dir/$statefile_name.tst &>/dev/null
   status=$?
   
   if [ $status -ne 0 ]; then
