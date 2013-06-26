@@ -1,3 +1,3 @@
 # clean up byproducts
-rm *.log
-rm log_widget.xml
+rm -f *.log
+rm -f log_widget.xml
