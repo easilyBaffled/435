@@ -76,7 +76,7 @@ do
 
   replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -g $test_name.orc -d 1000"
 
-	$dist_dir/sel-replayer.sh $replayer_args
+	bash $dist_dir/sel-replayer.sh $replayer_args
 	mv GUITAR-Default.STA $output_file_path.$test_name.STA
 	
 
