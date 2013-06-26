@@ -117,16 +117,16 @@ dist_dir="../dist/guitar"
 width=3
 depth=3
 
-ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox -p firefoxV6 >> $piped_output 2>> $piped_err"
+ripper_args="--website-url $website -w $width -d $depth -g $output_file_path.GUI -b Firefox -p firefoxV6"
 
 
 # run ripper
 echo "[INFO] - $testname: Running ripper now.."
-bash $dist_dir/sel-ripper.sh $ripper_args 
+bash $dist_dir/sel-ripper.sh $ripper_args  >> $piped_output 2>> $piped_err
 
 
 echo "[INFO] - $testname: Checking generated GUI file.."
-diff $current_file_path.GUI $expected_file_path.GUI &>/dev/null/
+diff $current_file_path.GUI $expected_file_path.GUI &>/dev/null
 status=$?
 
 if [ $status -ne 0]; then
@@ -141,12 +141,12 @@ fi
 
 # run gui 2 efg
 echo "[INFO] - $testname: Running GUI-to-EFG Converter.."
-gui_to_efg_args="-g $input_file_path.GUI -e $output_file_path.EFG >> $piped_output 2>> $piped_err"
+gui_to_efg_args="-g $input_file_path.GUI -e $output_file_path.EFG"
 
-bash $dist_dir/gui2efg.sh $gui_to_efg_args
+bash $dist_dir/gui2efg.sh $gui_to_efg_args  >> $piped_output 2>> $piped_err
 
 echo "[INFO] - $testname: Checking generated EFG file.."
-diff $current_file_path.EFG $expected_file_path.EFG &>/dev/null/
+diff $current_file_path.EFG $expected_file_path.EFG &>/dev/null
 status=$?
 
 if [ $status -ne 0]; then
@@ -161,10 +161,10 @@ fi
 
 
 # run testcase generator
-tc_args="-e $output_file_path.EFG -m $max_testcases -d $current_gen_testcase_dir >> $piped_output 2>> $piped_err"
+tc_args="-e $output_file_path.EFG -m $max_testcases -d $current_gen_testcase_dir"
 
 echo "[INFO] - $testname: Running test-case generator.."
-bash $dist_dir/tc-gen-sq.sh $tc_args
+bash $dist_dir/tc-gen-sq.sh $tc_args  >> $piped_output 2>> $piped_err
 
 echo "[INFO] - $testname: Checking generated tst files.."
 
@@ -175,7 +175,7 @@ do
   test_name=`basename $testcase`
   test_name=${test_name%.*}
 
-  diff $current_gen_testcase_dir/$testcase $expected_gen_testcase_dir/$testcase &>/dev/null/
+  diff $current_gen_testcase_dir/$testcase $expected_gen_testcase_dir/$testcase &>/dev/null
   status=$?
 
   if [ $status -ne 0]; then
@@ -205,9 +205,9 @@ do
   test_name=`basename $testcase`
   test_name=${test_name%.*}
 
-  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -g $test_name.orc -d 1000 >> $piped_output 2>> $piped_err"
+  replayer_args="--website-url $website -g $output_file_path.GUI -e $output_file_path.EFG -t $testcase -g $test_name.orc -d 1000"
 
-	$dist_dir/sel-replayer.sh $replayer_args
+	$dist_dir/sel-replayer.sh $replayer_args  >> $piped_output 2>> $piped_err
 
 	mv GUITAR-Default.STA $output_file_path.$test_name.STA
 
@@ -221,7 +221,7 @@ do
   # getting test name 
   statefile_name=`basename $statefile`
 
-  diff $statefile $statefile_name &>/dev/null/
+  diff $statefile $statefile_name &>/dev/null
   status=$?
   
   if [ $status -ne 0]; then
