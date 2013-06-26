@@ -148,7 +148,7 @@ status=$?
 
 if [ $status -ne 0 ]; then
   let error_count+=1
-  echo "[FAILURE] - $testname: Ripper output failed. Generated GUI did not match the expected GUI"
+  echo "[FAILURE] - $testname: Ripper output failed. Generated GUI ($current_file_path.GUI) did not match the expected GUI ($expected_file_path.GUI)"
 else
   echo "[SUCCESS] - $testname: Ripper output verified! Generated GUI is consistent with expected GUI"
 fi
