@@ -75,12 +75,13 @@ fi
 
 testcase_current_dir=$testcase_dir/$testname
 
+
+
+
+
 piped_output=$testcase_current_dir/$piped_output
 piped_err=$testcase_current_dir/$piped_err
 
-# clear output files
-rm -f $piped_output
-rm -f $piped_err
 
 
 expected_file_path=$testcase_expected_dir/$testname
@@ -95,9 +96,25 @@ input_gen_testcase_dir=$current_gen_testcase_dir
 
 
 
+#create current files directory
+echo "[INFO] - $testname: Clearing output directories and files.."
+
+# clear output directory
+rm -rf -f $testcase_current_dir
+
+# clear output files
+rm -f $piped_output
+rm -f $piped_err
+
+echo "[INFO] - $testname: Creating output directories.."
+# create output directories
+mkdir $testcase_current_dir
+mkdir $current_gen_testcase_dir
+
+
 input_file_path=$current_file_path
 
-if [ $isolate == "true" ]; then
+if [ $isolate = "true" ]; then
   echo "[INFO] - $testname: Isolated-mode active"
   input_file_path=$expected_file_path
   input_gen_testcase_dir=$expected_gen_testcase_dir
