@@ -11,7 +11,7 @@ do
   bash $testfile
   status=$?
   
-  if [ $status -eq 0 ];then
+  if [ $status -eq 0 ]; then
     echo "$testfile passed!"
     let succ_count+=1
   else
