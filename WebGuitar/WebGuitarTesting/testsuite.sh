@@ -57,7 +57,7 @@ fi
 
 #report coverage: uses default datafile
 echo "[INFO] - testsuite: Generating coverage report"
-bash $cobertura_report --basedir $jars_dir --destination $coverage_report_dir --format xml
+bash $cobertura_report --basedir $jars_dir/*.jar --destination $coverage_report_dir --format xml
 
 
 if [ $total_count -eq $succ_count ]; then
