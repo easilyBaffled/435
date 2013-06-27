@@ -8,9 +8,18 @@ cobertura_report="$cobertura_dir/cobertura-report.sh"
 
 jars_dir="../dist/guitar/jars/guitar-lib"
 
+
+# clear code coverage files/directories
+echo "[INFO] - testsuite: Clearing code coverage files and directories"
+rm -f cobertura.ser
+rm -f -rf $coverage_report_dir
+
+
+
+
 #intrument code: uses default datafile location & name (currentdirectory/cobertura.ser)
 echo "[INFO] - testsuite: Intrumenting code from jars directory"
-bash $cobertura_intrument --basedir $jars_dir
+bash $cobertura_intrument --basedir $jars_dir/*.jar
 
 
 
