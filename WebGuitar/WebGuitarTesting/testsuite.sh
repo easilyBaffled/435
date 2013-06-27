@@ -1,10 +1,7 @@
-
 testcase_dir="."
 cobertura_dir="../lib/cobertura"
 coverage_report_dir="./coverage"
 
-
-cobertura_jar="$cobertura_dir/cobertura.jar"
 
 cobertura_intrument="$cobertura_dir/cobertura-instrument.sh"
 cobertura_report="$cobertura_dir/cobertura-report.sh"
