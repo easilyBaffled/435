@@ -19,7 +19,7 @@ rm -f -rf $coverage_report_dir
 
 #intrument code: uses default datafile location & name (currentdirectory/cobertura.ser)
 echo "[INFO] - testsuite: Intrumenting code from jars directory"
-bash $cobertura_intrument --basedir $jars_dir/*.jar
+bash $cobertura_intrument $jars_dir/*.jar
 
 
 
@@ -57,7 +57,7 @@ fi
 
 #report coverage: uses default datafile
 echo "[INFO] - testsuite: Generating coverage report"
-bash $cobertura_report --basedir $jars_dir/*.jar --destination $coverage_report_dir --format xml
+bash $cobertura_report --destination $coverage_report_dir --format xml $jars_dir/*.jar
 
 
 if [ $total_count -eq $succ_count ]; then
